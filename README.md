@@ -23,3 +23,6 @@ Input a name for the role group, eg “Exchange Auditing,” then click Next.
 Type the name of the investigative User account in the “Members” box, then select the account name, click Next, Add Role Group, and Done.
 
 NOTE: This may cause a low-severity alert for “Elevation of Exchange Admin Privileges,” which can be ignored for this specific alert instance. 
+
+## PowerShell Modules
+To use the [ual-export-for-sof-elk](https://github.com/secure-cake/m365-bec-resources/blob/main/ual-export-for-sof-elk) you'll need to use PowerShell, install the Exchange Online Module, and authenticate to the tenant you are investigating. Here is the MS article on that process: https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps
