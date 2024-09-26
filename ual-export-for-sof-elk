@@ -1,0 +1,20 @@
+#From EXO PowerShell - Use script to export for ingestion into SOF-ELK:
+#Change path to desired output location and change name to reflect date range
+$OutputFile = ".\ual-userid-pc-07012023-07202023.json"
+#Enter "UserID" in quotes or leave as $null for all Users
+$userids = $null
+#Enter start search date in format mm-dd-yyyy
+$StartSearchDate = get-date "7-1-2023”
+#Enter start search date in format mm-dd-yyyy
+$EndSearchDate = get-date "7-20-2023"
+$FormattedStartDate = Get-Date $EndSearchDate
+$DaysToSearch = (new-timespan -start $StartSearchDate -End $EndSearchDate).days
+For ($i=0; $i -le $DaysToSearch; $i++){
+  For ($j=23; $j -ge 0; $j--){
+    $StartDate = ($EndSearchDate.AddDays(-$i)).AddHours($j)
+    $EndDate = ($EndSearchDate.AddDays(-$i)).AddHours($j + 1)
+    $Audit = Search-UnifiedAuditLog -StartDate $StartDate -EndDate $EndDate -userIDs $userids -ResultSize 5000
+$ConvertAudit = $Audit | select-object -expandproperty AuditData | out-file -encoding UTF8 $OutputFile -Append
+Write-Host $StartDate `t $Audit.Count
+  }
+} 
