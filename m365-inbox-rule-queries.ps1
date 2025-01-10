@@ -1,5 +1,7 @@
 #Check Mailbox Details and Inbox Rules for Mailboxes of Interest:
-#[First auth to Exchange Online via PowerShell! – connect-exchangeonline]
+#First auth to Exchange Online via PowerShell! – connect-exchangeonline
+#IMPORTANT: Inbox rule events appear (or DON'T appear) differently based on OWA vs MS Outlook creation
+
 #To overcome truncated output…
 $formatenumerationlimit=-1
 Get-Mailbox -identity sallysmith | select identity,litigationholdenabled,protocolsettings,antispambypassenabled,userprincipalname,auditowner,whenmailboxcreated,accountdisabled,emailaddresses | out-string -width 1000
