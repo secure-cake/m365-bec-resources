@@ -15,6 +15,7 @@ get-inboxrule –mailbox userxyz@company.com | select * | export-csv ‘D:\Cases
 #Search Mailbox Audit Log: 
 #NOTE: Inbox Rule operations = updateinboxrules (all I saw in testing anyhow)
 Search-MailboxAuditLog -StartDate 01/06/2020 -EndDate 01/20/2020 -Identity <user> -Operations MailItemsAccessed -ResultSize 10000 -ShowDetails | Where {$_.OperationProperties -like "*MailAccessType:Sync*"} | FL
+
 #Sync Context Identifiers: clientinfostring; clientipaddress; sessionid; userid
 
 #Search a specific identity and specific operation: 
