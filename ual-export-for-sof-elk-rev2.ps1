@@ -15,7 +15,7 @@ $DaysToSearch = (new-timespan -start $StartSearchDate -End $EndSearchDate).days
 For ($i=0; $i -le $DaysToSearch; $i++){
   For ($j=1440; $j -ge 0; $j -= $ual_interval_minutes){
     $StartDate = ($EndSearchDate.AddDays(-$i)).AddMinutes($j)
-    $EndDate = ($EndSearchDate.AddDays(-$i)).AddMinutes($j)
+    $EndDate = ($EndSearchDate.AddDays(-$i)).AddMinutes($j + 30)
     $Audit = Search-UnifiedAuditLog -StartDate $StartDate -EndDate $EndDate -userIDs $userids -ResultSize 5000
 $ConvertAudit = $Audit | select-object -expandproperty AuditData | out-file -encoding UTF8 $OutputFile -Append
 Write-Host $StartDate $Audit.Count
