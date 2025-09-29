@@ -1,6 +1,6 @@
 ## M365 BEC Webcast - CTF Challenge
 
-You’ve been asked to investigate an Entra ID alert regarding unusual authentication to M365 from Larry James’ account (ljames @ interlink-tech.com) and provided with a Unified Audit Log (UAL) CSV export from Purview for your analysis. 
+You’ve been asked to investigate an Entra ID alert regarding unusual authentication to M365 from Larry James’ account (ljames @ interlink-tech.com) and been provided with a Unified Audit Log (UAL) CSV export from Purview for your analysis. 
 
 [UAL Export File](https://securecake.nyc3.cdn.digitaloceanspaces.com/m365_bec_webcast/CTF-Purview-Audit-LJames-08052024-08092024.csv)
 
