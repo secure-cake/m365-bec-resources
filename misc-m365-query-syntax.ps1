@@ -14,3 +14,8 @@ $mailboxes = get-mailbox -Identity * | select primarysmtpaddress
 foreach ($mailbox in $mailboxes) {Get-InboxRule -mailbox $mailbox.primarysmtpaddress | select mailboxownerid,name,movetofolder,sentto,from,enabled | export-csv 'D:\Cases\your-case\inbox-rules.csv' -NoTypeInformation -append}
 #Investigate Inbox Rules for a Single User
 get-inboxrule –mailbox user@yourcompany.com | select * | export-csv 'D:\Cases\your-case\userxyz-inbox-rules.csv' -notypeinformation
+#Export all Enterprise Apps ('service principals') and all Application (via Entra PowerShell Module)
+Install-Module -Name Microsoft.Entra -Repository PSGallery -Scope CurrentUser -Force -AllowClobber
+Connect-Entra
+get-entraapplication -all | select displayname,appid | Sort-Object displayname | Export-Csv ..\entra-enterprise-apps-09122025.csv -NoTypeInformation
+Get-EntraServicePrincipal -all | select displayname,appid | Sort-Object displayname | Export-Csv ..\entra-enterprise-spn-09122025.csv -NoTypeInformation
