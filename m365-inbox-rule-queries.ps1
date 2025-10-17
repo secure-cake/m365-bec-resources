@@ -12,7 +12,7 @@ $mailboxes = get-mailbox -Identity * | select primarysmtpaddress
 foreach ($mailbox in $mailboxes) {Get-InboxRule -mailbox $mailbox.primarysmtpaddress | select mailboxownerid,name,movetofolder,sentto,from,enabled | export-csv 'D:\Cases\2023-0829-abc\inbox-rules.csv' -NoTypeInformation -append}
 
 #For Mailboxes of Interest, Export ALL Inbox Rules with Details:
-get-inboxrule –mailbox userxyz@company.com | select * | export-csv ‘D:\Cases\2023-0829-abc\userxyz-inbox-rules.csv -notypeinformation
+get-inboxrule –mailbox userxyz@company.com | select * | export-csv ‘D:\Cases\2023-0829-abc\userxyz-inbox-rules.csv‘ -notypeinformation
 
 #Search Mailbox Audit Log: 
 #NOTE: Inbox Rule operations = updateinboxrules (all I saw in testing anyhow)
